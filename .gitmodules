@@ -1,0 +1,3 @@
+[submodule "scr/main/libs/StorageOrigin-Handler"]
+	path = scr/main/libs/StorageOrigin-Handler
+	url = https://github.com/DrBopoH/StorageOrigin-Handler
