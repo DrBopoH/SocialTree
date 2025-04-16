@@ -18,7 +18,7 @@ up_req: mount_venv
 
 
 run_app:
-	@cmd /c "$(VENV_ACTIVATE) & $(VENV_PYTHON) main/main.py"
+	@cmd /c "uvicorn main.main:app --port 8000 --reload"
 
 
 run_tests:

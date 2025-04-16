@@ -1,9 +1,15 @@
-from utils import utils
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 
-def main():
-    x, y = 5, 10
-    print(f"{x} + {y} = {utils.add(x, y)}")
-    print(f"{x} * {y} = {utils.multiply(x, y)}")
 
-if __name__ == "__main__":
-    main()
+
+app: FastAPI = FastAPI()
+app.mount('/static', StaticFiles(directory='main/static/'), name='static')
+
+templates: Jinja2Templates = Jinja2Templates(directory='main/templates/')
+
+@app.get("/", response_class=HTMLResponse)
+async def tong(request: Request):
+	return templates.TemplateResponse('index.html', {"request": request, 'title': "Hello world! Its FastAPI!"})
